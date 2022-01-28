@@ -34,17 +34,37 @@ For this prototype, we wanted to see how complimentary Shuwa's algorithm would b
 code generation (and it seems to do well)! Another constrain is the fact that we do not have full utility with Copilot. Either we devise a hacky way to generate autocomplete or continue
 to expand our manually created dataset.''')
 
-st.subheader('Try it out') 
-gesture = ['load','normalize']
-code_translation = ['(train_images, train_labels), (test_images, test_labels) = mnist.load_data()',
+st.subheader('Try it out')
+st.markdown('''In another terminal, go to the directory which contains
+`webcam_demo_knn.py` and run `python webcam_demo_knn.py` Go to playmode and record your gestures one at a time.
+
+Afterwards click the `Generate Code` button and see what code KAPI generates for you!''') 
+gesture, code_translation = [], []
+
+
+def get_data(table, db, gesture, code_translation):
+# # retrieve data from SQL database   
+#     query = 'SELECT * FROM {}'.format(table)
+#     df = db.query(query)
+#     return df
+    gesture = ['load','normalize']
+    code_translation = ['(train_images, train_labels), (test_images, test_labels) = mnist.load_data()',
         '''train_images = train_images / 255.0 \ntest_images = test_images / 255.0''']
+    return gesture, code_translation
+
+
+
 with st.form('editor'):
+    gen_button = st.form_submit_button(label='Generate Code')
+    if gen_button:
+        with st.spinner():
+            gesture, code_translation = get_data('ml_gestures', 'ml_gestures', gesture, code_translation)
     for ges, code in zip(gesture, code_translation):
         with st.expander(ges):
             st.code(code)
-    submit_button = st.form_submit_button(label='Clear')
-    if submit_button:
-        gesture, code_translation = [],[]
+    reset_button = st.form_submit_button(label='Reset')
+    if reset_button:
+        gesture, code_translation = [], []
 
 _left, mid, _right = st.columns(3)
 with mid:
