@@ -47,9 +47,16 @@ def get_data(table, db, gesture, code_translation):
 #     query = 'SELECT * FROM {}'.format(table)
 #     df = db.query(query)
 #     return df
-    gesture = ['load','normalize']
+
+#''' SQL not working at the monent, so we use a hardcoded dataframe '''
+    gesture = ['load','normalize', 'compile1','compile2','compile3','evaluate','render']
     code_translation = ['(train_images, train_labels), (test_images, test_labels) = mnist.load_data()',
-        '''train_images = train_images / 255.0 \ntest_images = test_images / 255.0''']
+        '''train_images = train_images / 255.0 \ntest_images = test_images / 255.0''',
+        '''model = keras.Sequential([\n ''',
+        '''keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),\n keras.layers.MaxPooling2D(2, 2), # pooling layer\n''' , 
+        '''keras.layers.Flatten(),\n keras.layers.Dense(128, activation='relu'),\n keras.layers.Dense(10, activation='softmax')\n ])''',
+        '''model.compile(optimizer=adam, \nloss=sparse_categorical_crossentropy,\nmetrics=[accuracy])''',
+        '''model.summary()''',]
     return gesture, code_translation
 
 
