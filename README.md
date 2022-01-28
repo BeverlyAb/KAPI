@@ -17,7 +17,7 @@ step, we created and included the following gestures into Shuwa's dataset: `load
 Ideally after recognizing the gesture, we would post the classification to our Azure SQL Database. From there, we map the gesture with a 
 table that contains the code translations and post that into this website! This helps as we consider the scalability of our app across many users.
 _Note that this prototype does not communicate with the database yet, but the tables are created as shown below._
-<img src='KAPI-website/KAPI_database.png' title='Gesture to Code Translations' width='' alt='db' />
+<img src='KAPI-website/KAPI_database.PNG' title='Gesture to Code Translations' width='' alt='db' />
 
 
 <img src='KAPI-website/KAPI_user_motions.png' title='user_motions' width='' alt='user_motions' />
