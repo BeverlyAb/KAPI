@@ -8,9 +8,11 @@ st.markdown('''Welcome to a prototype of our Keyboardless, ASL-inspired Programm
 into Python code, specifically for Machine Learning applications. We aim to remove the need for keyboards
 and allow users to freely program using only webcam. The process of our prototype can be broken into gesture recognition, data storage, and code generation.''')
 
+st.image(image='Kapi_arch.png', width=500, caption='KAPI Architecture')
+
 st.subheader('Gesture Recognition')
 st.markdown('''For this prototype we relied on Google's [Shuwa Gesture Toolkit](https://github.com/google/shuwa) to process
-a person's pose, face, and hand gestures and recognize them as commmonly used ML functions. As a preliminary
+a person's pose, face, and hand gestures and recognize them as commonly used ML functions. As a preliminary
 step, we created and included the following gestures into Shuwa's dataset: 
 ''')
 
@@ -32,7 +34,8 @@ st.markdown('''In the future, we'd like the full application to be processed on 
 and displaying it on a website. Users may experience some disconnect since they use separate interfaces, and this should be addressed in the future.
 For this prototype, we wanted to see how complimentary Shuwa's algorithm would be for our use case, which is real time processing and
 code generation (and it seems to do well)! Another constrain is the fact that we do not have full utility with Copilot. Either we devise a hacky way to generate autocomplete or continue
-to expand our manually created dataset.''')
+to expand our manually created dataset. Lastly, we were not able to connect to our SQL server at the last minute, so the demo shows code translations, 
+if the user gestured the commands for `load`, `normalize`, `compile`, `evaluate`, and `render`.''')
 
 st.subheader('Try it out')
 st.markdown('''In another terminal, go to the directory which contains
@@ -49,11 +52,11 @@ def get_data(table, db, gesture, code_translation):
 #     return df
 
 #''' SQL not working at the monent, so we use a hardcoded dataframe '''
-    gesture = ['load','normalize', 'compile1','compile2','compile3','evaluate','render']
+    gesture = ['load','normalize', 'compile','evaluate','render']
     code_translation = ['(train_images, train_labels), (test_images, test_labels) = mnist.load_data()',
         '''train_images = train_images / 255.0 \ntest_images = test_images / 255.0''',
-        '''model = keras.Sequential([\n ''',
-        '''keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),\n keras.layers.MaxPooling2D(2, 2), # pooling layer\n''' , 
+        '''model = keras.Sequential([\n '''+
+        '''keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(28, 28, 1)),\n keras.layers.MaxPooling2D(2, 2), # pooling layer\n''' + 
         '''keras.layers.Flatten(),\n keras.layers.Dense(128, activation='relu'),\n keras.layers.Dense(10, activation='softmax')\n ])''',
         '''model.compile(optimizer=adam, \nloss=sparse_categorical_crossentropy,\nmetrics=[accuracy])''',
         '''model.summary()''',]
