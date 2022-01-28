@@ -20,8 +20,13 @@ ml_gestures = DataFrame({'ML Gestures': ['load'] + ['normalize'] + ['reshape'] +
 st.table(ml_gestures)
 
 st.subheader('Data Storage')
-st.markdown('''After recognizing the gesture, we post the classification to our Azure SQL Database. From there, we map the gesture with a 
-table that contains the code translations and post that into this website! This helps as we consider the scalability of our app across many users.''')
+st.markdown('''Ideally after recognizing the gesture, we would post the classification to our Azure SQL Database. From there, we map the gesture with a 
+table that contains the code translations and post that into this website! This helps as we consider the scalability of our app across many users.
+_Note that this prototype does not communicate with the database yet, but the tables are created as shown below._''')
+
+st.image(image='Kapi_database.png', width=500, caption='Gesture to Code Translations')
+
+st.image(image='Kapi_user_motions.png', width=500, caption='User data')
 
 st.subheader('Code Generation')
 st.markdown('''The table mentioned above was created with the help of [Github Copilot](https://copilot.github.com/). We originally wanted to use 
