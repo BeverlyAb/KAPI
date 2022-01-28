@@ -16,7 +16,8 @@ step, we created and included the following gestures into Shuwa's dataset: `load
 ## Data Storage
 After recognizing the gesture, we post the classification to our Azure SQL Database. From there, we map the gesture with a 
 table that contains the code translations and post that into this website! This helps as we consider the scalability of our app across many users.
-
+<img src='KAPI-website/KAPI_database.png' title='ERD' width='' alt='db' />
+<img src='KAPI-website/KAPI_user_motions.png' title='ERD' width='' alt='user_motions' />
 
 ## Code Generation
 The table mentioned above was created with the help of [Github Copilot](https://copilot.github.com/). We originally wanted to use 
