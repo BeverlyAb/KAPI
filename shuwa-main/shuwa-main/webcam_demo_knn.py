@@ -78,7 +78,13 @@ class Application(DemoGUI, Pipeline):
         if self.is_play_mode:
             self.load_database()        
                         
-                            
+    def write_to_file(self, result_class_name, filename):
+        # write result_class_name into filename
+            file = open(filename, "a")
+            file.write(result_class_name + "\n")
+            file.close()
+
+
     def toggle_record_button(self):
         super().toggle_record_button()    
         if not self.is_recording:
@@ -89,6 +95,7 @@ class Application(DemoGUI, Pipeline):
                     self.console_box.delete('1.0', 'end')
                     self.console_box.insert('end',
                         "Nearest class: {:s}\n".format(result_class_name))
+                    self.write_to_file(result_class_name, "result.txt")
 
                         
                 # record mode.
