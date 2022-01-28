@@ -15,3 +15,4 @@ In your terminal `pip install -r requirements` Then go to the directory `KAPI-we
 run Shuwa. To run the gesture recognition, go to the `shuwa-main` directory that contains `webcam_demo_knn.py` and run `python webcam_demo._knn.py`
 
 ## [Prototype Demo](https://uci.zoom.us/rec/share/W0VB84wadmxFiK6sebvmxyJahRw-NFg34JbUCHv-aiaVt3xTf6fqU_5eBeyRpv3k.Rrd6bzJwUMKwo4Cj?startTime=1643409309000)
+Note that the demo shows code translations, if the user gestured the commands for `load`, `normalize`, `compile`, `evaluate`, and `render`. It is not yet live, since the user's gestures are not connected to the server...yet.
