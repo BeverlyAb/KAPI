@@ -1,6 +1,6 @@
 from pandas import DataFrame
 import streamlit as st
-
+import os
 # st.markdown("<h1 style='text-align: center; color: black;'>KAPI</h1>", unsafe_allow_html=True)
 
 st.title('KAPI')
@@ -8,7 +8,8 @@ st.markdown('''Welcome to a prototype of our Keyboardless, ASL-inspired Programm
 into Python code, specifically for Machine Learning applications. We aim to remove the need for keyboards
 and allow users to freely program using only webcam. The process of our prototype can be broken into gesture recognition, data storage, and code generation.''')
 
-st.image(image='Kapi_arch.png', width=500, caption='KAPI Architecture')
+path = os.path.dirname(__file__)
+st.image(image=path+'/KAPI_arch.png', width=500, caption='KAPI Architecture')
 
 st.subheader('Gesture Recognition')
 st.markdown('''For this prototype we relied on Google's [Shuwa Gesture Toolkit](https://github.com/google/shuwa) to process
@@ -24,9 +25,9 @@ st.markdown('''Ideally after recognizing the gesture, we would post the classifi
 table that contains the code translations and post that into this website! This helps as we consider the scalability of our app across many users.
 _Note that this prototype does not communicate with the database yet, but the tables are created as shown below._''')
 
-st.image(image='Kapi_database.png', width=500, caption='Gesture to Code Translations')
+st.image(image=path+'/KAPI_database.PNG', width=500, caption='Gesture to Code Translations')
 
-st.image(image='Kapi_user_motions.png', width=500, caption='User data')
+st.image(image=path+'/KAPI_user_motions.png', width=500, caption='User data')
 
 st.subheader('Code Generation')
 st.markdown('''The table mentioned above was created with the help of [Github Copilot](https://copilot.github.com/). We originally wanted to use 
@@ -37,10 +38,11 @@ keyboard, we decided to create our own dataset based on Copilot offline. Alas, t
 st.subheader('Room for Improvement')
 st.markdown('''In the future, we'd like the full application to be processed on Azure ML. This would remove the need of opening Shuwa, storing values on a SQL database 
 and displaying it on a website. Users may experience some disconnect since they use separate interfaces, and this should be addressed in the future.
-For this prototype, we wanted to see how complimentary Shuwa's algorithm would be for our use case, which is real time processing and
-code generation (and it seems to do well)! Another constrain is the fact that we do not have full utility with Copilot. Either we devise a hacky way to generate autocomplete or continue
+For this prototype, we wanted to see how complimentary Shuwa's algorithm would be for our use case, which is low-latency, multi-model real time image processing (and it seems to do well
+)! Another constrain is the fact that we do not have full utility with Copilot. Either we devise a hacky way to generate autocomplete or continue
 to expand our manually created dataset. Lastly, we were not able to connect to our SQL server at the last minute, so the demo shows code translations, 
-if the user gestured the commands for `load`, `normalize`, `compile`, `evaluate`, and `render`.''')
+if the user gestured the commands for `load`, `normalize`, `compile`, `evaluate`, and `render`. So far our dataset is specific to running
+a CNN on MNIST dataset.''')
 
 st.subheader('Try it out')
 st.markdown('''In another terminal, go to the directory which contains
@@ -83,4 +85,4 @@ with st.form('editor'):
 
 _left, mid, _right = st.columns(3)
 with mid:
-    st.image(image='KAPI_logo.png',caption='KAPI logo.\n(Kapi means monkey in sanskrit)')
+    st.image(image=path+'/Kapi_logo.png',caption='KAPI logo.\n(Kapi means monkey in sanskrit)')
