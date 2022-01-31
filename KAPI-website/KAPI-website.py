@@ -7,6 +7,8 @@ st.title('KAPI')
 st.markdown('''Welcome to a prototype of our Keyboardless, ASL-inspired Programming Interface (**KAPI**)! The purpose of KAPI is to translate sign language 
 into Python code, specifically for Machine Learning applications. We aim to remove the need for keyboards
 and allow users to freely program using only webcam. The process of our prototype can be broken into gesture recognition, data storage, and code generation.''')
+
+path = os.dir(__file__)
 st.image(image=path+'/Kapi_arch.png', width=500, caption='KAPI Architecture')
 
 st.subheader('Gesture Recognition')
