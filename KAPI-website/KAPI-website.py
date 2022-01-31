@@ -25,7 +25,7 @@ st.markdown('''Ideally after recognizing the gesture, we would post the classifi
 table that contains the code translations and post that into this website! This helps as we consider the scalability of our app across many users.
 _Note that this prototype does not communicate with the database yet, but the tables are created as shown below._''')
 
-st.image(image=path+'/KAPI_database.png', width=500, caption='Gesture to Code Translations')
+st.image(image=path+'/KAPI_database.PNG', width=500, caption='Gesture to Code Translations')
 
 st.image(image=path+'/KAPI_user_motions.png', width=500, caption='User data')
 
