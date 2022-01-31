@@ -9,7 +9,7 @@ into Python code, specifically for Machine Learning applications. We aim to remo
 and allow users to freely program using only webcam. The process of our prototype can be broken into gesture recognition, data storage, and code generation.''')
 
 path = os.path.dirname(__file__)
-st.image(image='/kapi/KAPI-website/Kapi_arch.png', width=500, caption='KAPI Architecture')
+st.image(image='/kapi/KAPI-website/KAPI_arch.png', width=500, caption='KAPI Architecture')
 
 st.subheader('Gesture Recognition')
 st.markdown('''For this prototype we relied on Google's [Shuwa Gesture Toolkit](https://github.com/google/shuwa) to process
