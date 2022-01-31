@@ -25,9 +25,9 @@ st.markdown('''Ideally after recognizing the gesture, we would post the classifi
 table that contains the code translations and post that into this website! This helps as we consider the scalability of our app across many users.
 _Note that this prototype does not communicate with the database yet, but the tables are created as shown below._''')
 
-st.image(image=path+'/Kapi_database.png', width=500, caption='Gesture to Code Translations')
+st.image(image=path+'/KAPI_database.png', width=500, caption='Gesture to Code Translations')
 
-st.image(image=path+'/Kapi_user_motions.png', width=500, caption='User data')
+st.image(image=path+'/KAPI_user_motions.png', width=500, caption='User data')
 
 st.subheader('Code Generation')
 st.markdown('''The table mentioned above was created with the help of [Github Copilot](https://copilot.github.com/). We originally wanted to use 
@@ -84,4 +84,4 @@ with st.form('editor'):
 
 _left, mid, _right = st.columns(3)
 with mid:
-    st.image(image=path+'/KAPI_logo.png',caption='KAPI logo.\n(Kapi means monkey in sanskrit)')
+    st.image(image=path+'/Kapi_logo.png',caption='KAPI logo.\n(Kapi means monkey in sanskrit)')
