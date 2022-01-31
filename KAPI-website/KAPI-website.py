@@ -41,7 +41,8 @@ and displaying it on a website. Users may experience some disconnect since they 
 For this prototype, we wanted to see how complimentary Shuwa's algorithm would be for our use case, which is low-latency, multi-model real time image processing (and it seems to do well
 )! Another constrain is the fact that we do not have full utility with Copilot. Either we devise a hacky way to generate autocomplete or continue
 to expand our manually created dataset. Lastly, we were not able to connect to our SQL server at the last minute, so the demo shows code translations, 
-if the user gestured the commands for `load`, `normalize`, `compile`, `evaluate`, and `render`.''')
+if the user gestured the commands for `load`, `normalize`, `compile`, `evaluate`, and `render`. So far our dataset is specific to running
+a CNN on MNIST dataset.''')
 
 st.subheader('Try it out')
 st.markdown('''In another terminal, go to the directory which contains
