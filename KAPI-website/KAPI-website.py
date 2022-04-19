@@ -58,8 +58,8 @@ def get_data(table, db, gesture, code_translation):
 #     df = db.query(query)
 #     return df
 
-#''' SQL not working at the monent, so we use a hardcoded dataframe '''
-    gesture = ['load','normalize', 'compile','evaluate','render']
+#''' SQL not working at the monent, so read from file'''
+    gesture_library = ['ASL_load','ASL_normalize', 'ASL_compile','ASL_evaluate','ASL_render']
     code_translation = ['(train_images, train_labels), (test_images, test_labels) = mnist.load_data()',
         '''train_images = train_images / 255.0 \ntest_images = test_images / 255.0''',
         '''model = keras.Sequential([\n '''+
@@ -67,10 +67,21 @@ def get_data(table, db, gesture, code_translation):
         '''keras.layers.Flatten(),\n keras.layers.Dense(128, activation='relu'),\n keras.layers.Dense(10, activation='softmax')\n ])''',
         '''model.compile(optimizer=adam, \nloss=sparse_categorical_crossentropy,\nmetrics=[accuracy])''',
         '''model.summary()''',]
-    return gesture, code_translation
+    gesture_code_dict = dict(zip(gesture_library, code_translation))
+    # read contents from file
+    user_gesture = []
+    with open(path+'/../shuwa-main/shuwa-main/result.txt', 'r') as f:
+        lines = f.readlines()
+        for line in lines:
+            user_gesture.append(line.split(',')[0].strip())
+    
+    sign_code = []
+    for ug in user_gesture:
+        sign_code.append(gesture_code_dict[ug])
+    return user_gesture, sign_code
 
-
-
+# '/Users/fullstackmachine/Desktop/BevCode/Projects/KAPI/KAPI/KAPI-website/shuwa-main/shuwa-main/result.txt'
+# /Users/fullstackmachine/Desktop/BevCode/Projects/KAPI/KAPI              /shuwa-main/shuwa-main/result.txt
 with st.form('editor'):
     gen_button = st.form_submit_button(label='Generate Code')
     if gen_button:
