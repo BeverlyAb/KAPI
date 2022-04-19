@@ -22,7 +22,7 @@ for basename in os.listdir(folder):
 
 # Make a UI to run different files.
 
-fname_to_run = st.sidebar.selectbox('Select an app', fnames)
+fname_to_run = st.sidebar.selectbox('Select an app', [os.path.basename(fname)])
 
 # Create module from filepath and put in sys.modules, so Streamlit knows
 # to watch it for changes.
@@ -41,7 +41,7 @@ def load_module(filepath):
 
 # Run the selected file.
 
-with open(fname_to_run) as f:
+with open(os.path.join(folder,fname)) as f:
     load_module(fname_to_run)
     filebody = f.read()
 
