@@ -80,8 +80,7 @@ def get_data(table, db, gesture, code_translation):
         sign_code.append(gesture_code_dict[ug])
     return user_gesture, sign_code
 
-# '/Users/fullstackmachine/Desktop/BevCode/Projects/KAPI/KAPI/KAPI-website/shuwa-main/shuwa-main/result.txt'
-# /Users/fullstackmachine/Desktop/BevCode/Projects/KAPI/KAPI              /shuwa-main/shuwa-main/result.txt
+
 with st.form('editor'):
     gen_button = st.form_submit_button(label='Generate Code')
     if gen_button:
@@ -93,6 +92,8 @@ with st.form('editor'):
     reset_button = st.form_submit_button(label='Reset')
     if reset_button:
         gesture, code_translation = [], []
+        with open(path+'/../shuwa-main/shuwa-main/result.txt', 'w') as f:
+            f.write('')
 
 _left, mid, _right = st.columns(3)
 with mid:

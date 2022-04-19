@@ -1,3 +1,0 @@
-ASL_load
-ASL_compile
-ASL_render
